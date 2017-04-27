@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="cordova-https-special"
+  version="0.0.1">
+
+    <name>Https special</name>
+ 
+    <description>
+        Cordova / Phonegap plugin for Https requst for special cases.
+	</description>
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <dependency id="cordova-plugin-file" version=">=2.0.0" />
+
+    <js-module src="www/CordovaHttpsSpc.js" name="CordovaHttpsSpc">
+        <clobbers target="CordovaHttpsSpc" />
+    </js-module>
+
+    
+
+    <!--android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CordovaHttpsSpc">
+                <param name="android-package" value="com.heroworks.CordovaHttpsSpc"/>
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.INTERNET" />
+        </config-file>
+        
+        <source-file src="src/android/com/heroworks/CordovaHttpsSpc/CordovaHttpsSpc.java" target-dir="src/com/heroworks/" />
+        <source-file src="src/android/com/heroworks/CordovaHttpsSpc/PostRequest.java" target-dir="src/com/heroworks/" />
+    </platform>
+</plugin>
